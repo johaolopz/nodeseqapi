@@ -1,0 +1,24 @@
+{
+  "name": "api_node_orm",
+  "version": "1.0.0",
+  "description": "Api Node/Sequelize",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "author": "Johao Lopez",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "body-parser": "^1.19.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.1",
+    "sequelize": "^6.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
