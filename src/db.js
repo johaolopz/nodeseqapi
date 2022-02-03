@@ -68,11 +68,25 @@ const {
 } = sequelize.models;
 
 //// Aca vendrian las relaciones
-// Especialista_medico.hasOne(Agenda);
-// Agenda.belongsTo(Especialista_medico);
+//Relacion 1:1 con foreignKey de Perfil en Usuario
+Perfil.hasOne(Usuario);
+Usuario.belongsTo(Perfil);
 
-// Agenda.hasMany(Turno);
-// Turno.belongsTo(Agenda);
+//Relacion n:m con a través de la tabla UsuarioReporte
+Usuario.belongsToMany(Reporte, { through: 'UsuarioReporte' });
+Reporte.belongsToMany(Usuario, { through: 'UsuarioReporte' });
+
+//Relacion n:m con a través de la tabla ReporteActividad
+Reporte.belongsToMany(Actividad, { through: 'ReporteActividad' });
+Actividad.belongsToMany(Reporte, { through: 'ReporteActividad' });
+
+//Relacion 1:m con foreignKey de Usuario en OrdenTrabajo
+Usuario.hasMany(OrdenTrabajo);
+OrdenTrabajo.belongsTo(Usuario);
+
+//Relacion 1:1 con foreignKey de OrdenTrabajo en Reporte
+OrdenTrabajo.hasOne(Reporte);
+Reporte.belongsTo(OrdenTrabajo);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
